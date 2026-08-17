@@ -2041,3 +2041,116 @@ body, html{
 .not-loaded * {
   animation-play-state: paused !important;
 }
+
+/* --- 1. HIDE FLOWER RETURN BUTTON --- */
+#close-flower {
+    display: none !important;
+}
+
+/* --- 2. ADD TEXTBOX BACKGROUND & ADJUST FLOWER SIZE --- */
+/* This creates a frosted glass box behind your text */
+.flower-text-content {
+    top: 8% !important; /* Moves it higher up the screen */
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+    padding: 25px 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Cleans up the text inside the new box */
+.flower-text-content h2 {
+    border-bottom: none !important; /* Removes the dashed line */
+    text-shadow: 0 0 10px rgba(107, 240, 255, 0.6) !important;
+    line-height: 1.5;
+}
+
+/* Shrinks the flowers slightly and pushes them down so they don't overlap the text */
+#flower-wrapper .flowers {
+    transform: scale(0.65) translateY(10vmin) !important;
+}
+
+/* =========================================
+   FINAL TWEAKS: FLOWER COLOR & TEXTBOX REMOVAL
+   ========================================= */
+
+/* --- 1. REMOVE THE FROSTED TEXTBOX --- */
+.flower-text-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+}
+
+/* --- 2. CHANGE FLOWER PETAL COLORS --- */
+/* The default was cyan/teal. I've set this to a beautiful pink to match your final slide! */
+.flower__leaf {
+    background-color: #ffc2d1 !important; /* The base light color */
+    background-image: linear-gradient(to top, #ff4d6d, #ffc2d1) !important; /* Gradients from dark to light */
+}
+
+/* This targets the inner curled petal to give it depth */
+.flower__leaf--4 {
+    background-image: linear-gradient(to top, #c9184a, #ffc2d1) !important; 
+}
+
+/* =========================================
+   NATURAL GREEN STALKS & LEAVES OVERRIDE
+   ========================================= */
+
+/* Main stems */
+.flower__line {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.2)), 
+                      linear-gradient(to top, transparent 10%, #1a512e, #439b59) !important;
+}
+
+/* Small leaves attached directly to the main stems */
+.flower__line__leaf {
+    background-image: linear-gradient(to top, rgba(26, 81, 46, 0.4), #439b59) !important;
+}
+
+/* Base variables for grass and long stems */
+.flower__grass, .flower__g-long {
+    --c: #2e8b57 !important; 
+}
+
+/* Front bushy leaves */
+.flower__g-front__line {
+    background-image: linear-gradient(to top, transparent, #006400, transparent 100%) !important;
+}
+.flower__g-front__leaf {
+    box-shadow: inset 0 2px 1vmin rgba(144, 238, 144, 0.2) !important;
+    background-image: linear-gradient(to bottom left, transparent, var(--dark-color)), 
+                      linear-gradient(to bottom right, #2e8b57 50%, transparent 50%, transparent) !important;
+    -webkit-mask-image: linear-gradient(to bottom right, #2e8b57 50%, transparent 50%, transparent) !important;
+    mask-image: linear-gradient(to bottom right, #2e8b57 50%, transparent 50%, transparent) !important;
+}
+
+/* Right and Front-Right ferns */
+.flower__g-right .leaf, .flower__g-fr .leaf {
+    border-left: 2vmin solid #006400 !important;
+}
+.flower__g-right .leaf {
+    -webkit-mask-image: linear-gradient(to top, transparent 30%, #006400 60%) !important;
+}
+.flower__g-fr .leaf {
+    -webkit-mask-image: linear-gradient(to top, transparent 25%, #006400 50%) !important;
+}
+.flower__g-fr__leaf {
+    box-shadow: inset 0 2px 1vmin rgba(144, 238, 144, 0.2) !important;
+    background-image: linear-gradient(to bottom left, transparent, var(--dark-color) 98%), 
+                      linear-gradient(to bottom right, #90ee90 45%, transparent 50%, transparent) !important;
+    -webkit-mask-image: linear-gradient(135deg, #2e8b57 40%, transparent 50%, transparent) !important;
+}
+
+/* Background tall grasses */
+.long-g--1 .leaf, .long-g--2 .leaf, .long-g--3 .leaf, .long-g--4 .leaf {
+    -webkit-mask-image: linear-gradient(to top, transparent 45%, #006400 80%) !important;
+}
+
+/* Make half of the floating fireflies a soft green instead of neon cyan */
+.flower__light:nth-child(odd) {
+    background-color: #90ee90 !important;
+}

@@ -59,7 +59,18 @@ function checkUnlock() {
 // Left Box Click
 gw1.addEventListener('click', () => {
     gw1.querySelector('.bouncing-text').style.display = 'none';
-    letterText.innerHTML = "<h2>Letter 1</h2><p>Write your first beautiful message here!</p>";
+    
+    // Notice the backticks (`) used here instead of quotes!
+    letterText.innerHTML = `
+        <h2>Yooo Happy Birthdayy broo,</h2>
+        
+        <p>I know living in this world is not easy, huahahha, but you managed to survive for 25 whole years. You're one of the most hardworking and diligent people I've ever known, so I'm pretty sure you'll succeed in everything you work on.</p>
+        
+        <p>So yeah, happy birthday and wishing you all the best things in this world! May every good thing you pray for come true, and may you always be happy and surrounded by people who make you happy too.</p>
+
+		<p> - Audrey - <p>
+    `;
+    
     letterModal.style.display = 'flex';
     leftOpened = true;
     checkUnlock();
@@ -68,7 +79,16 @@ gw1.addEventListener('click', () => {
 // Right Box Click
 gw3.addEventListener('click', () => {
     gw3.querySelector('.bouncing-text').style.display = 'none';
-    letterText.innerHTML = "<h2>Letter 2</h2><p>Write your second beautiful message here!</p>";
+    
+    // Notice the backticks (`) used here instead of quotes!
+    letterText.innerHTML = `        
+        <p>Thoughts and feelings are not something that can be easily expressed into words, even when written down. Yet, if not expressed, the receipient will never be able to properly understand what the other person wants to convey. I'm not someone who can clearly express my feelings, which is a core strength you have, so I'll write it in a more roundabout way.</p>
+        
+        <p>Therefore, Happy 25th Birthday to you, my dear sister. May the path you choose to walk in the future be illuminated by the sun, and your convictions stay strong and proud like a lion even in the midst of all the fog that blocks your path. Just as how the stars illuminate the sky at night, I hope that just as many as there are stars in the sky, there is an equal amount of people supporting you in every step of the way.</p>
+
+        <p> - Andrew - <p>
+    `;
+    
     letterModal.style.display = 'flex';
     rightOpened = true;
     checkUnlock();
