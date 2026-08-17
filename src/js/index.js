@@ -74,11 +74,19 @@ gw3.addEventListener('click', () => {
     checkUnlock();
 });
 
-// Middle Box Click
+// Middle Box Click (Flower Animation)
 gw2.addEventListener('click', () => {
     if (!gw2.classList.contains('locked')) {
         gw2.querySelector('.bouncing-text').style.display = 'none';
         flowerModal.style.display = 'flex';
+        
+        // Reset and trigger the blooming animation
+        const flowerWrapper = document.getElementById('flower-wrapper');
+        flowerWrapper.classList.add('not-loaded');
+        
+        setTimeout(() => {
+            flowerWrapper.classList.remove('not-loaded');
+        }, 1000);
     }
 });
 
