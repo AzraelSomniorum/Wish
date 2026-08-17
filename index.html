@@ -1993,9 +1993,40 @@
           ><span>y</span>
         </h1>
       </div>
-      <img src="src/images/gift.png" alt="" id="gf1" />
-      <img src="src/images/gift.png" alt="" id="gf2" />
-      <img src="src/images/gift.png" alt="" id="gf3" />
+<!-- Replaced Gift Layout -->
+      <div class="gifts-container">
+        <div class="gift-wrapper" id="gw1">
+          <span class="bouncing-text">Click Here</span>
+          <img src="src/images/gift.png" alt="" class="gift-box" />
+        </div>
+        
+        <div class="gift-wrapper locked" id="gw2">
+          <span class="bouncing-text" style="display:none;">Click Here</span>
+          <img src="src/images/gift.png" alt="" class="gift-box" />
+        </div>
+        
+        <div class="gift-wrapper" id="gw3">
+          <span class="bouncing-text">Click Here</span>
+          <img src="src/images/gift.png" alt="" class="gift-box" />
+        </div>
+      </div>
+
+      <!-- Letter Modal -->
+      <div id="letter-modal" class="modal">
+        <div class="modal-content">
+          <p id="letter-text">Your letter goes here...</p>
+          <button id="close-letter">Return</button>
+        </div>
+      </div>
+
+      <!-- Flower Animation Modal -->
+      <div id="flower-modal" class="modal">
+        <div class="modal-content" id="flower-container">
+           <!-- PASTE CODEPEN HTML HERE -->
+           <h2>Blooming Flowers!</h2>
+           <button id="close-flower">Return</button>
+        </div>
+      </div>
     </div>
 
     <script src="src/js/index.js"></script>

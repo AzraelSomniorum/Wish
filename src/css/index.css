@@ -765,3 +765,239 @@ body, html{
 		height:200px;
 	}
 }
+
+/* --- 1. FIX DOUBLE TRANSITIONS --- */
+.second--canvas::after,
+.third--canvas::after {
+    display: none !important; 
+}
+
+/* --- 2. HIDE OLD ABSOLUTE GIFTS (If not removed from HTML) --- */
+.third--canvas > img#gf1, .third--canvas > img#gf2, .third--canvas > img#gf3 {
+    display: none;
+}
+
+/* --- 3. NEW GIFT LAYOUT (Spread out, middle box higher) --- */
+.gifts-container {
+    position: absolute;
+    bottom: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly; /* Spreads them out evenly */
+    align-items: flex-end;
+    z-index: 10;
+}
+
+.gift-wrapper {
+    position: relative;
+    cursor: pointer;
+    transform: scale(0);
+    animation: giftIcon 500ms ease forwards;
+}
+
+#gw1 { animation-delay: 4300ms; }
+/* Middle box higher */
+#gw2 { animation-delay: 4800ms; bottom: 4em; } 
+#gw3 { animation-delay: 5300ms; }
+
+.gift-box {
+    width: auto;
+    height: auto;
+    transition: all 0.5s ease;
+}
+
+/* --- 4. LOCK/UNLOCK MIDDLE BOX LOGIC --- */
+#gw2.locked .gift-box {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+#gw2.unlocked .gift-box {
+    filter: grayscale(0%);
+    opacity: 1;
+    pointer-events: auto;
+    /* Light surrounding the opened box */
+    box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+
+/* --- 5. BOUNCING TEXT --- */
+.bouncing-text {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    animation: bounceText 0.6s infinite alternate;
+    white-space: nowrap;
+}
+
+@keyframes bounceText {
+    from { top: -30px; }
+    to { top: -45px; }
+}
+
+/* --- 6. MODAL STYLING --- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    text-transform: none;
+    letter-spacing: normal;
+}
+.modal-content {
+    background: #fff;
+    color: #333;
+    padding: 3em;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 80%;
+}
+.modal button {
+    margin-top: 2em;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-family: inherit;
+    background: #1080f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* =========================================
+   NEW OVERRIDES: FIXES & STYLING (V2)
+   ========================================= */
+
+/* --- 1. REMOVE DOUBLE TRANSITIONS & WHITE WIPES --- */
+.first--slide::before,
+.canvas--remove,
+.third--canvas::before,
+.third--canvas::after {
+    display: none !important; 
+}
+
+/* --- 2. SEAMLESS BACKGROUND COLOR TRANSITIONS --- */
+/* Slide 1: Dark Grey -> Purple */
+.first--slide {
+    animation: changeFirstBg 1s ease 2.5s forwards !important;
+}
+@keyframes changeFirstBg {
+    from { background-color: #423d46; } 
+    to { background-color: #6b5b95; }   
+}
+
+/* Slide 2: Purple -> Warm Celebration Pink (Let's Celebrate) */
+.second--canvas {
+    animation: changeSecondBg 1.5s ease forwards !important;
+}
+@keyframes changeSecondBg {
+    from { background-color: #6b5b95; } /* Starts exactly where Slide 1 left off */
+    to { background-color: #ffaa9b; }   
+}
+
+/* Slide 3: Warm Celebration Pink -> Final Light Pink (Happy Birthday) */
+.third--canvas {
+    animation: changeThirdBg 1.5s ease forwards !important;
+}
+@keyframes changeThirdBg {
+    from { background-color: #ffaa9b; } /* Starts exactly where Slide 2 left off */
+    to { background-color: #ffb6c1; }   
+}
+
+/* --- 3. BANNER & TEXT COLORS --- */
+/* Soften the stark white banner with a translucent look so the pink bleeds through */
+.third--canvas .center--line {
+    background-color: rgba(255, 255, 255, 0.7) !important; 
+}
+.third--canvas .center--line h1 {
+    color: #5ab2d6 !important; /* Slightly deeper sky blue for readability against the banner */
+}
+
+/* --- 4. GIFT BOX LAYOUT & GLOW --- */
+/* Lowering the middle box so it sits more evenly with the others */
+#gw2 {
+    bottom: 1em !important; 
+}
+
+/* Gentle floating/breathing animation for the unlocked box */
+#gw2.unlocked .gift-box {
+    filter: grayscale(0%);
+    opacity: 1;
+    pointer-events: auto;
+    border-radius: 10px !important;
+    animation: gentlePulse 2s infinite alternate !important; 
+}
+
+@keyframes gentlePulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px 2px rgba(255, 223, 0, 0.4) !important;
+    }
+    100% {
+        transform: scale(1.08) translateY(-5px);
+        box-shadow: 0 0 25px 8px rgba(255, 223, 0, 0.8) !important;
+    }
+}
+
+/* --- 5. LETTER MODAL: PAPER STYLING --- */
+#letter-modal .modal-content {
+    background-color: #fcf8e8; 
+    background-image: repeating-linear-gradient(transparent, transparent 29px, #91c5cb 29px, #91c5cb 30px);
+    line-height: 30px;
+    padding: 2em 3em;
+    border: 1px solid #d3c4a6;
+    border-radius: 2px; 
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.15);
+    color: #444;
+    font-family: 'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive, sans-serif; 
+}
+
+/* --- 6. MODAL BUTTON --- */
+.modal button {
+    padding: 6px 14px !important;
+    font-size: 0.9rem !important;
+    background: #8b6b55 !important; 
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 2em;
+    font-family: "carter one", sans-serif; 
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+/* --- OVERRIDE: TEXT BOUNCE HEIGHT FIX --- */
+.bouncing-text {
+    top: -60px !important; /* Lifts the starting position higher */
+}
+@keyframes bounceText {
+    from { top: -60px; }
+    to { top: -75px; }
+}
+
+/* --- OVERRIDE: PNG GLOW FIX --- */
+#gw2.unlocked .gift-box {
+    border-radius: 0 !important; 
+    box-shadow: none !important; /* Kills the old square shadow */
+    animation: gentlePulse 2s infinite alternate !important; 
+}
+
+/* Using drop-shadow perfectly hugs the shape of the gift box */
+@keyframes gentlePulse {
+    0% {
+        transform: scale(1);
+        filter: grayscale(0%) drop-shadow(0 0 10px rgba(255, 223, 0, 0.6));
+    }
+    100% {
+        transform: scale(1.08) translateY(-5px);
+        filter: grayscale(0%) drop-shadow(0 0 25px rgba(255, 223, 0, 1));
+    }
+}
